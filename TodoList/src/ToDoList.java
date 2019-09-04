@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -38,5 +39,14 @@ public class ToDoList {
 		for (Task task: allTasks) 
 			if (task.isComplete() == true) completedTasks.add(task);
 		return completedTasks;
+	}
+	public Collection<Task> search(String input) {
+		Collection<Task> results = new ArrayList<Task>();
+		for(Entry<String, Task> entry: tasks.entrySet()) {
+			if(input == entry.getKey()) {
+				results.add(entry.getValue());
+			}
+		}
+		return results;
 	}
 }

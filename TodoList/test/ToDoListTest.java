@@ -1,6 +1,7 @@
 //import static org.junit.jupiter.api.Assertions.*;
 
 //import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.junit.*;
@@ -68,5 +69,18 @@ public class ToDoListTest extends TestCase{
 		
 		Collection<Task> tasks = todoList.getCompletedTasks();
 		assertEquals(2, tasks.size());
+	}
+	
+	@Test
+	public void testSearch() {
+		todoList.addTask(task2);
+		Collection<Task> results = new ArrayList<Task>();
+		assertEquals(todoList.search(""), results);
+		assertEquals(todoList.search("desc 1"), results);
+		todoList.addTask(task2);
+		assertEquals(todoList.search("desc 1"), results);
+		results.clear();
+		results.add(task2);
+		assertEquals(todoList.search("desc 2"), results);
 	}
 }
